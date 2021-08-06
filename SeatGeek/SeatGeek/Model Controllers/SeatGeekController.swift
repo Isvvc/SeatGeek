@@ -12,7 +12,9 @@ class SeatGeekController {
     
     //MARK: Properties
     
+    /// The `client_id` API key
     var clientID: String? = ProcessInfo.processInfo.environment["client_id"]
+    /// The authorization header encoded to base-64.
     var auth: String? {
         guard let clientID = clientID else { return nil }
         return "\(clientID):".data(using: .utf8)?.base64EncodedString()
@@ -41,8 +43,15 @@ class SeatGeekController {
     
     //MARK: Functions
     
+    /// Fetches a list of Events from the server.
+    /// - Parameters:
+    ///   - completion: If client ID is invalid, this will run immediately on the same thread.
+    ///   Otherwise, it runs when the network call finishes on a background thread.
+    ///   - events: The Events returned by the server.
+    ///   - error: An error object that indicates why the request failed, or nil if the request was successful.
+    /// - Returns: A URLSession data task which has been resumed.
     @discardableResult
-    func getEvents(completion: @escaping ([Event]?, Error?) -> Void) -> URLSessionDataTask? {
+    func getEvents(completion: @escaping (_ events: [Event]?, _ error: Error?) -> Void) -> URLSessionDataTask? {
         guard let auth = auth,
               let url = URL(string: "https://api.seatgeek.com/2/events") else {
             NSLog("No valid client ID found. Set client_id in the scheme's environment to your SeatGeek client ID.")
@@ -72,6 +81,12 @@ class SeatGeekController {
     
     //MARK: Private
     
+    /// Loads Event objects based on the given JSON.
+    /// - Parameters:
+    ///   - json: A JSON object that has an "events" key containing an array of events.
+    ///   - moc: The Core Data context to fetch and create Event objects on.
+    /// - Throws: An error if existing Events cannot be fetched.
+    /// - Returns: An array of Events that match the contents of the JSON if it is valid.
     @discardableResult
     private func loadEvents(from json: JSON, context moc: NSManagedObjectContext) throws -> [Event]? {
         guard let eventsJSON = json["events"].array else { return nil }
@@ -88,6 +103,14 @@ class SeatGeekController {
         return eventsJSON.compactMap { loadEvent(from: $0, existingEvents: eventsByID, context: moc) }
     }
     
+    /// Loads an Event object based on the given JSON.
+    /// - Parameters:
+    ///   - json: A JSON event.
+    ///   - existingEvents: A dictionary of existing events keyed by their IDs.
+    ///   - moc: The Core Data context to create new Event objects on.
+    /// - Returns: The Event matching the JSON if it is valid.
+    /// If an Event already exists with the ID in the JSON, that Event is updated based on the JSON content and returned.
+    /// If no Event exists with the ID in the JSON, a new Event is created.
     private func loadEvent(from json: JSON, existingEvents: [Int64: Event], context moc: NSManagedObjectContext) -> Event? {
         guard let id = json["id"].int64 else { return nil }
         if let existingEvent = existingEvents[id] {
