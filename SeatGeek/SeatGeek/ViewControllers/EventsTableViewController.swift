@@ -12,6 +12,8 @@ class EventsTableViewController: UITableViewController {
     
     var seatGeekController = SeatGeekController()
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
     lazy var fetchedResultsController: NSFetchedResultsController<Event> = {
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
         
@@ -42,6 +44,11 @@ class EventsTableViewController: UITableViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         
         tableView.refreshControl = refreshControl
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
         
         seatGeekController.getEvents { _, _ in
             print("Fetch complete")
@@ -98,6 +105,14 @@ class EventsTableViewController: UITableViewController {
         }
     }
 
+}
+
+//MARK: Search results updating
+
+extension EventsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
 }
 
 //MARK: Fetched Results Controller Delegate
