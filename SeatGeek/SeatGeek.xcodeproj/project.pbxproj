@@ -17,6 +17,7 @@
 		59F23DFB26BDBA9E00CE20DA /* SeatGeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DFA26BDBA9E00CE20DA /* SeatGeekTests.swift */; };
 		59F23E0626BDBA9E00CE20DA /* SeatGeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23E0526BDBA9E00CE20DA /* SeatGeekUITests.swift */; };
 		59F23E1526BDBC4800CE20DA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23E1426BDBC4800CE20DA /* Persistence.swift */; };
+		59F23E1A26BDC35000CE20DA /* SeatGeekController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23E1926BDC35000CE20DA /* SeatGeekController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		59F23E0526BDBA9E00CE20DA /* SeatGeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekUITests.swift; sourceTree = "<group>"; };
 		59F23E0726BDBA9E00CE20DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59F23E1426BDBC4800CE20DA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		59F23E1926BDC35000CE20DA /* SeatGeekController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				59F23E1426BDBC4800CE20DA /* Persistence.swift */,
+				59F23E1926BDC35000CE20DA /* SeatGeekController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */,
 				59F23DEB26BDBA9A00CE20DA /* SeatGeek.xcdatamodeld in Sources */,
 				59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */,
+				59F23E1A26BDC35000CE20DA /* SeatGeekController.swift in Sources */,
 				59F23E1526BDBC4800CE20DA /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
