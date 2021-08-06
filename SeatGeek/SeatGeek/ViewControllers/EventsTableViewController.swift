@@ -11,6 +11,10 @@ import CoreData
 class EventsTableViewController: UITableViewController {
     
     var seatGeekController = SeatGeekController()
+    var dataTask: URLSessionDataTask?
+    var previousSearchResults: [Event] = []
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     lazy var fetchedResultsController: NSFetchedResultsController<Event> = {
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
@@ -43,7 +47,12 @@ class EventsTableViewController: UITableViewController {
         
         tableView.refreshControl = refreshControl
         
-        seatGeekController.getEvents { _, _ in
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        
+        dataTask = seatGeekController.getEvents { _, _ in
             print("Fetch complete")
         }
     }
@@ -89,15 +98,67 @@ class EventsTableViewController: UITableViewController {
     
     //MARK: Private
     
-    @objc func refresh(_ refreshControl: UIRefreshControl) {
-        seatGeekController.getEvents { _, _ in
+    @objc
+    private func refresh(_ refreshControl: UIRefreshControl) {
+        dataTask?.cancel()
+        dataTask = seatGeekController.getEvents { _, _ in
             print("Refresh complete")
             DispatchQueue.main.async {
                 refreshControl.endRefreshing()
             }
         }
     }
+    
+    private func frcPredicate(searchString: String?, events: Set<Event>? = nil) -> NSPredicate? {
+        guard let searchString = searchString,
+              !searchString.isEmpty else { return nil }
+        let lowercaseSearch = searchString.lowercased()
+        
+        var predicates = [NSPredicate(format: "title CONTAINS[c] %@", lowercaseSearch)]
+        
+        if let events = events {
+            predicates.append(NSPredicate(format: "self IN %@", events))
+        }
+        
+        return NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
+    }
 
+}
+
+//MARK: Search results updating
+
+extension EventsTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        // Perform fast, local search if there is no ongoing networking search.
+        let searchString = searchController.searchBar.text
+        if searchString?.isEmpty ?? true || self.previousSearchResults.isEmpty {
+            self.previousSearchResults.removeAll()
+            fetchedResultsController.fetchRequest.predicate = frcPredicate(searchString: searchString)
+            try? fetchedResultsController.performFetch()
+            tableView.reloadData()
+        }
+        
+        // Query the server
+        if let searchString = searchString {
+            dataTask?.cancel()
+            dataTask = seatGeekController.getEvents(search: searchString, completion: { [weak self] events, error in
+                guard let events = events,
+                      let self = self else { return }
+                DispatchQueue.main.async {
+                    // Update the FRC to show search results
+                    self.fetchedResultsController.fetchRequest.predicate = self.frcPredicate(searchString: searchString, events: Set(events))
+                    
+                    try? self.fetchedResultsController.performFetch()
+                    
+                    // Only refrush the table if there are changes.
+                    if self.fetchedResultsController.fetchedObjects != self.previousSearchResults {
+                        self.tableView.reloadData()
+                        self.previousSearchResults = self.fetchedResultsController.fetchedObjects ?? []
+                    }
+                }
+            })
+        }
+    }
 }
 
 //MARK: Fetched Results Controller Delegate
