@@ -20,7 +20,7 @@ class SeatGeekTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testGetEvents() throws {
+    func testGetEvents() {
         let expectation = XCTestExpectation(description: "Get events")
         
         seatGeekController.getEvents { events, error in
@@ -31,6 +31,27 @@ class SeatGeekTests: XCTestCase {
         }
         
         wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testSearchEvents() {
+        let expectation = XCTestExpectation(description: "Search events")
+        
+        seatGeekController.getEvents { [unowned self] events, error in
+            XCTAssertNil(error)
+            XCTAssertNotNil(events)
+            XCTAssertFalse(events?.isEmpty ?? true)
+            
+            seatGeekController.getEvents(search: "boston") { searchEvents, error in
+                XCTAssertNil(error)
+                XCTAssertNotNil(searchEvents)
+                XCTAssertFalse(searchEvents?.isEmpty ?? true)
+                // Check that the search worked and the results are not the same
+                XCTAssertNotEqual(searchEvents, events)
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 1000.0)
     }
 
     func testPerformanceExample() throws {
