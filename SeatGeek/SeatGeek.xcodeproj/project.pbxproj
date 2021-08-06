@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5904646A26BDC5E8004C90D2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5904646926BDC5E8004C90D2 /* SwiftyJSON */; };
 		59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */; };
 		59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */; };
 		59F23DE526BDBA9A00CE20DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE426BDBA9A00CE20DA /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5904646A26BDC5E8004C90D2 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +163,9 @@
 			dependencies = (
 			);
 			name = SeatGeek;
+			packageProductDependencies = (
+				5904646926BDC5E8004C90D2 /* SwiftyJSON */,
+			);
 			productName = SeatGeek;
 			productReference = 59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */;
 			productType = "com.apple.product-type.application";
@@ -232,6 +237,9 @@
 				Base,
 			);
 			mainGroup = 59F23DD426BDBA9A00CE20DA;
+			packageReferences = (
+				5904646826BDC5E8004C90D2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 59F23DDE26BDBA9A00CE20DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -615,6 +623,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5904646826BDC5E8004C90D2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5904646926BDC5E8004C90D2 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5904646826BDC5E8004C90D2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		59F23DE926BDBA9A00CE20DA /* SeatGeek.xcdatamodeld */ = {

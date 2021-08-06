@@ -24,6 +24,7 @@ class SeatGeekTests: XCTestCase {
         seatGeekController.getEvents { json, error in
             XCTAssertNil(error)
             XCTAssertNotNil(json)
+            XCTAssertFalse(json?.isEmpty ?? true)
         }
     }
 
