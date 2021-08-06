@@ -21,4 +21,14 @@ extension Event {
         self.title = title
         self.date = date
     }
+    
+    func update(from json: JSON) {
+        if let title = json["title"].string {
+            self.title = title
+        }
+        if let dateString = json["datetime_utc"].string,
+           let date = SeatGeekController.dateFormatter.date(from: dateString) {
+            self.date = date
+        }
+    }
 }

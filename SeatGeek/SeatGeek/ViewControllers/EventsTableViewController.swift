@@ -37,7 +37,13 @@ class EventsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        seatGeekController.getEvents {_, _ in
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        
+        tableView.refreshControl = refreshControl
+        
+        seatGeekController.getEvents { _, _ in
             print("Fetch complete")
         }
     }
@@ -60,6 +66,16 @@ class EventsTableViewController: UITableViewController {
 
         return cell
     }
+    
+    #if DEBUG
+    // This exists to test the refresh. Swipe to delete an Event and pull to refresh to see that it appears again.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let event = fetchedResultsController.object(at: indexPath)
+            seatGeekController.moc.delete(event)
+        }
+    }
+    #endif
 
     /*
     // MARK: - Navigation
@@ -70,6 +86,17 @@ class EventsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //MARK: Private
+    
+    @objc func refresh(_ refreshControl: UIRefreshControl) {
+        seatGeekController.getEvents { _, _ in
+            print("Refresh complete")
+            DispatchQueue.main.async {
+                refreshControl.endRefreshing()
+            }
+        }
+    }
 
 }
 
