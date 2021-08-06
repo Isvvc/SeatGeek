@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5904646A26BDC5E8004C90D2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5904646926BDC5E8004C90D2 /* SwiftyJSON */; };
+		5904646D26BDC80A004C90D2 /* SeatGeek+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */; };
 		59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */; };
 		59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */; };
 		59F23DE526BDBA9A00CE20DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE426BDBA9A00CE20DA /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeatGeek+Convenience.swift"; sourceTree = "<group>"; };
 		59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeatGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5904646B26BDC759004C90D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59F23DE926BDBA9A00CE20DA /* SeatGeek.xcdatamodeld */,
+				5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		59F23DD426BDBA9A00CE20DA = {
 			isa = PBXGroup;
 			children = (
@@ -109,13 +120,13 @@
 			children = (
 				59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */,
 				59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */,
+				5904646B26BDC759004C90D2 /* Model */,
 				59F23E1326BDBC3400CE20DA /* Model Controllers */,
 				59F23DE426BDBA9A00CE20DA /* ViewController.swift */,
 				59F23DE626BDBA9A00CE20DA /* Main.storyboard */,
 				59F23DEC26BDBA9E00CE20DA /* Assets.xcassets */,
 				59F23DEE26BDBA9E00CE20DA /* LaunchScreen.storyboard */,
 				59F23DF126BDBA9E00CE20DA /* Info.plist */,
-				59F23DE926BDBA9A00CE20DA /* SeatGeek.xcdatamodeld */,
 			);
 			path = SeatGeek;
 			sourceTree = "<group>";
@@ -286,6 +297,7 @@
 				59F23DE526BDBA9A00CE20DA /* ViewController.swift in Sources */,
 				59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */,
 				59F23DEB26BDBA9A00CE20DA /* SeatGeek.xcdatamodeld in Sources */,
+				5904646D26BDC80A004C90D2 /* SeatGeek+Convenience.swift in Sources */,
 				59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */,
 				59F23E1A26BDC35000CE20DA /* SeatGeekController.swift in Sources */,
 				59F23E1526BDBC4800CE20DA /* Persistence.swift in Sources */,
