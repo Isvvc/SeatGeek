@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5904646A26BDC5E8004C90D2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5904646926BDC5E8004C90D2 /* SwiftyJSON */; };
+		5904646D26BDC80A004C90D2 /* SeatGeek+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */; };
+		5904647026BDCEB6004C90D2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */; };
 		59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */; };
 		59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */; };
-		59F23DE526BDBA9A00CE20DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE426BDBA9A00CE20DA /* ViewController.swift */; };
 		59F23DE826BDBA9A00CE20DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F23DE626BDBA9A00CE20DA /* Main.storyboard */; };
 		59F23DEB26BDBA9A00CE20DA /* SeatGeek.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE926BDBA9A00CE20DA /* SeatGeek.xcdatamodeld */; };
 		59F23DED26BDBA9E00CE20DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59F23DEC26BDBA9E00CE20DA /* Assets.xcassets */; };
@@ -17,6 +19,7 @@
 		59F23DFB26BDBA9E00CE20DA /* SeatGeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DFA26BDBA9E00CE20DA /* SeatGeekTests.swift */; };
 		59F23E0626BDBA9E00CE20DA /* SeatGeekUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23E0526BDBA9E00CE20DA /* SeatGeekUITests.swift */; };
 		59F23E1526BDBC4800CE20DA /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23E1426BDBC4800CE20DA /* Persistence.swift */; };
+		59F23E1A26BDC35000CE20DA /* SeatGeekController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23E1926BDC35000CE20DA /* SeatGeekController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,10 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeatGeek+Convenience.swift"; sourceTree = "<group>"; };
+		5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeatGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		59F23DE426BDBA9A00CE20DA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		59F23DE726BDBA9A00CE20DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		59F23DEA26BDBA9A00CE20DA /* SeatGeek.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SeatGeek.xcdatamodel; sourceTree = "<group>"; };
 		59F23DEC26BDBA9E00CE20DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +57,7 @@
 		59F23E0526BDBA9E00CE20DA /* SeatGeekUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekUITests.swift; sourceTree = "<group>"; };
 		59F23E0726BDBA9E00CE20DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59F23E1426BDBC4800CE20DA /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		59F23E1926BDC35000CE20DA /* SeatGeekController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatGeekController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5904646A26BDC5E8004C90D2 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +86,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5904646B26BDC759004C90D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				59F23DE926BDBA9A00CE20DA /* SeatGeek.xcdatamodeld */,
+				5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5904646E26BDCE96004C90D2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		59F23DD426BDBA9A00CE20DA = {
 			isa = PBXGroup;
 			children = (
@@ -105,13 +128,13 @@
 			children = (
 				59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */,
 				59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */,
+				5904646B26BDC759004C90D2 /* Model */,
+				5904646E26BDCE96004C90D2 /* ViewControllers */,
 				59F23E1326BDBC3400CE20DA /* Model Controllers */,
-				59F23DE426BDBA9A00CE20DA /* ViewController.swift */,
 				59F23DE626BDBA9A00CE20DA /* Main.storyboard */,
 				59F23DEC26BDBA9E00CE20DA /* Assets.xcassets */,
 				59F23DEE26BDBA9E00CE20DA /* LaunchScreen.storyboard */,
 				59F23DF126BDBA9E00CE20DA /* Info.plist */,
-				59F23DE926BDBA9A00CE20DA /* SeatGeek.xcdatamodeld */,
 			);
 			path = SeatGeek;
 			sourceTree = "<group>";
@@ -138,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				59F23E1426BDBC4800CE20DA /* Persistence.swift */,
+				59F23E1926BDC35000CE20DA /* SeatGeekController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -158,6 +182,9 @@
 			dependencies = (
 			);
 			name = SeatGeek;
+			packageProductDependencies = (
+				5904646926BDC5E8004C90D2 /* SwiftyJSON */,
+			);
 			productName = SeatGeek;
 			productReference = 59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +256,9 @@
 				Base,
 			);
 			mainGroup = 59F23DD426BDBA9A00CE20DA;
+			packageReferences = (
+				5904646826BDC5E8004C90D2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 59F23DDE26BDBA9A00CE20DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -272,10 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59F23DE526BDBA9A00CE20DA /* ViewController.swift in Sources */,
 				59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */,
+				5904647026BDCEB6004C90D2 /* EventsTableViewController.swift in Sources */,
 				59F23DEB26BDBA9A00CE20DA /* SeatGeek.xcdatamodeld in Sources */,
+				5904646D26BDC80A004C90D2 /* SeatGeek+Convenience.swift in Sources */,
 				59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */,
+				59F23E1A26BDC35000CE20DA /* SeatGeekController.swift in Sources */,
 				59F23E1526BDBC4800CE20DA /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,6 +643,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5904646826BDC5E8004C90D2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5904646926BDC5E8004C90D2 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5904646826BDC5E8004C90D2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		59F23DE926BDBA9A00CE20DA /* SeatGeek.xcdatamodeld */ = {
