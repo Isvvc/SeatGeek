@@ -96,13 +96,21 @@ class EventsTableViewController: UITableViewController {
     
     //MARK: Private
     
-    @objc func refresh(_ refreshControl: UIRefreshControl) {
+    @objc
+    private func refresh(_ refreshControl: UIRefreshControl) {
         seatGeekController.getEvents { _, _ in
             print("Refresh complete")
             DispatchQueue.main.async {
                 refreshControl.endRefreshing()
             }
         }
+    }
+    
+    private func frcPredicate(searchString: String?) -> NSPredicate? {
+        guard let searchString = searchString,
+              !searchString.isEmpty else { return nil }
+        let lowercaseSearch = searchString.lowercased()
+        return NSPredicate(format: "title CONTAINS[c] %@", lowercaseSearch)
     }
 
 }
@@ -111,7 +119,9 @@ class EventsTableViewController: UITableViewController {
 
 extension EventsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        fetchedResultsController.fetchRequest.predicate = frcPredicate(searchString: searchController.searchBar.text)
+        try? fetchedResultsController.performFetch()
+        tableView.reloadData()
     }
 }
 
