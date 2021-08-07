@@ -30,6 +30,8 @@ class EventTableViewCell: UITableViewCell {
             subheadline.text = nil
         }
         previewImageView.sd_setImage(with: event.image)
+        previewImageView.layer.cornerRadius = 8
+        previewImageView.clipsToBounds = true
     }
 
 }
