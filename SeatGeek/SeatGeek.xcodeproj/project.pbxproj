@@ -10,6 +10,7 @@
 		5904646A26BDC5E8004C90D2 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5904646926BDC5E8004C90D2 /* SwiftyJSON */; };
 		5904646D26BDC80A004C90D2 /* SeatGeek+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */; };
 		5904647026BDCEB6004C90D2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */; };
+		59965E4926BF278100ED2F83 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59965E4826BF278100ED2F83 /* EventTableViewCell.swift */; };
 		59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */; };
 		59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */; };
 		59F23DE826BDBA9A00CE20DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F23DE626BDBA9A00CE20DA /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeatGeek+Convenience.swift"; sourceTree = "<group>"; };
 		5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
+		59965E4826BF278100ED2F83 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeatGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		59965E4726BF276B00ED2F83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				59965E4826BF278100ED2F83 /* EventTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		59F23DD426BDBA9A00CE20DA = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 				59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */,
 				5904646B26BDC759004C90D2 /* Model */,
 				5904646E26BDCE96004C90D2 /* ViewControllers */,
+				59965E4726BF276B00ED2F83 /* Views */,
 				59F23E1326BDBC3400CE20DA /* Model Controllers */,
 				59F23DE626BDBA9A00CE20DA /* Main.storyboard */,
 				59F23DEC26BDBA9E00CE20DA /* Assets.xcassets */,
@@ -302,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59965E4926BF278100ED2F83 /* EventTableViewCell.swift in Sources */,
 				59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */,
 				5904647026BDCEB6004C90D2 /* EventsTableViewController.swift in Sources */,
 				59F23DEB26BDBA9A00CE20DA /* SeatGeek.xcdatamodeld in Sources */,

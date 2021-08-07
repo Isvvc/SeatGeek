@@ -70,8 +70,10 @@ class EventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath)
 
-        let event = fetchedResultsController.object(at: indexPath)
-        cell.textLabel?.text = event.title
+        if let eventCell = cell as? EventTableViewCell {
+            let event = fetchedResultsController.object(at: indexPath)
+            eventCell.load(event: event)
+        }
 
         return cell
     }
@@ -125,7 +127,7 @@ class EventsTableViewController: UITableViewController {
 
 }
 
-//MARK: Search results updating
+//MARK: Search Results Updating
 
 extension EventsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -164,6 +166,7 @@ extension EventsTableViewController: UISearchResultsUpdating {
 //MARK: Fetched Results Controller Delegate
 
 // Boilerplate code pasted from another project
+// Animates updates to the table observed by the Fetched Results Controller
 extension EventsTableViewController: NSFetchedResultsControllerDelegate {
     
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
