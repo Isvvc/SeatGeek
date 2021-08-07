@@ -94,6 +94,7 @@ class EventsTableViewController: UITableViewController {
         if let eventVC = segue.destination as? EventViewController,
            let indexPath = tableView.indexPathForSelectedRow {
             eventVC.event = fetchedResultsController.object(at: indexPath)
+            eventVC.seatGeekController = seatGeekController
         }
     }
     

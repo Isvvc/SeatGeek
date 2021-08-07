@@ -87,6 +87,7 @@ class SeatGeekController {
                 let json = try JSON(data: data)
                 let events = try self?.loadEvents(from: json, context: moc)
                 print(events?.compactMap { $0.title } ?? [])
+                PersistenceController.save(context: moc)
                 completion(events, error)
             } catch {
                 completion(nil, error)
@@ -96,10 +97,15 @@ class SeatGeekController {
         return task
     }
     
+    func save() {
+        PersistenceController.save(context: moc)
+    }
+    
     //MARK: Private
     
     private func authorizedRequest(url: URL) -> URLRequest? {
         guard let auth = auth else {
+            // fatalError instead?
             NSLog("No valid client ID found. Set client_id in the scheme's environment to your SeatGeek client ID.")
             return nil
         }
