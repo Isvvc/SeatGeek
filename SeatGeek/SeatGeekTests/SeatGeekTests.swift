@@ -6,18 +6,36 @@
 //
 
 import XCTest
+import SwiftyJSON
 @testable import SeatGeek
 
 class SeatGeekTests: XCTestCase {
     
     var seatGeekController = SeatGeekController(testing: true)
-
+    var demoEventJSON = JSON()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // Load the demo event JSON
+        let preloadDataURL = Bundle(for: type(of: self)).url(forResource: "DemoEvent", withExtension: "json")!
+        let demoEventJSONData = try Data(contentsOf: preloadDataURL)
+        demoEventJSON = try JSON(data: demoEventJSONData)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    /// Test that Events can be created from JSON
+    func testCreateEvent() {
+        let event = Event(json: demoEventJSON, context: seatGeekController.moc)
+        XCTAssertNotNil(event)
+        XCTAssertEqual(event?.title, "Young The Giant with Grouplove")
+        if let date = event?.date {
+            XCTAssertEqual(SeatGeekController.dateFormatter.string(from: date), "2012-03-10T00:00:00")
+        } else {
+            XCTFail("No date in Event")
+        }
+        XCTAssertEqual(event?.image?.absoluteString, "https://chairnerd.global.ssl.fastly.net/images/bandshuge/band_8741.jpg")
     }
 
     func testGetEvents() {

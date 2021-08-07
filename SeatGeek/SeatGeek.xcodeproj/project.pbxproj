@@ -11,6 +11,7 @@
 		5904646D26BDC80A004C90D2 /* SeatGeek+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */; };
 		5904647026BDCEB6004C90D2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */; };
 		59965E4926BF278100ED2F83 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59965E4826BF278100ED2F83 /* EventTableViewCell.swift */; };
+		59965E4D26BF301000ED2F83 /* DemoEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 59965E4C26BF301000ED2F83 /* DemoEvent.json */; };
 		59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */; };
 		59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */; };
 		59F23DE826BDBA9A00CE20DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F23DE626BDBA9A00CE20DA /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		5904646C26BDC80A004C90D2 /* SeatGeek+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SeatGeek+Convenience.swift"; sourceTree = "<group>"; };
 		5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		59965E4826BF278100ED2F83 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		59965E4C26BF301000ED2F83 /* DemoEvent.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DemoEvent.json; sourceTree = "<group>"; };
 		59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeatGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				59F23DFA26BDBA9E00CE20DA /* SeatGeekTests.swift */,
 				59F23DFC26BDBA9E00CE20DA /* Info.plist */,
+				59965E4C26BF301000ED2F83 /* DemoEvent.json */,
 			);
 			path = SeatGeekTests;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59965E4D26BF301000ED2F83 /* DemoEvent.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,6 +20,8 @@ extension Event {
         self.id = id
         self.title = title
         self.date = date
+        
+        getImage(from: json)
     }
     
     func update(from json: JSON) {
@@ -30,5 +32,17 @@ extension Event {
            let date = SeatGeekController.dateFormatter.date(from: dateString) {
             self.date = date
         }
+        
+        getImage(from: json)
+    }
+    
+    private func getImage(from json: JSON) {
+        // Imagesa are stored in "performers".
+        // Get the first image available.
+        _ = json["performers"].array?.first(where: { performer in
+            guard let url = performer["image"].url else { return false }
+            image = url
+            return true
+        })
     }
 }
