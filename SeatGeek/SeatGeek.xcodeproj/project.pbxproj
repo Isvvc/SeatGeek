@@ -13,6 +13,7 @@
 		59965E4926BF278100ED2F83 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59965E4826BF278100ED2F83 /* EventTableViewCell.swift */; };
 		59965E4D26BF301000ED2F83 /* DemoEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 59965E4C26BF301000ED2F83 /* DemoEvent.json */; };
 		59965E5026BF340A00ED2F83 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 59965E4F26BF340A00ED2F83 /* SDWebImage */; };
+		59965E5226BF362000ED2F83 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59965E5126BF362000ED2F83 /* EventViewController.swift */; };
 		59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */; };
 		59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */; };
 		59F23DE826BDBA9A00CE20DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F23DE626BDBA9A00CE20DA /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		59965E4826BF278100ED2F83 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		59965E4C26BF301000ED2F83 /* DemoEvent.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DemoEvent.json; sourceTree = "<group>"; };
+		59965E5126BF362000ED2F83 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeatGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */,
+				59965E5126BF362000ED2F83 /* EventViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				5904647026BDCEB6004C90D2 /* EventsTableViewController.swift in Sources */,
 				59F23DEB26BDBA9A00CE20DA /* SeatGeek.xcdatamodeld in Sources */,
 				5904646D26BDC80A004C90D2 /* SeatGeek+Convenience.swift in Sources */,
+				59965E5226BF362000ED2F83 /* EventViewController.swift in Sources */,
 				59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */,
 				59F23E1A26BDC35000CE20DA /* SeatGeekController.swift in Sources */,
 				59F23E1526BDBC4800CE20DA /* Persistence.swift in Sources */,
