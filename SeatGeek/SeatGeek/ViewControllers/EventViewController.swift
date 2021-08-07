@@ -2,7 +2,7 @@
 //  EventViewController.swift
 //  SeatGeek
 //
-//  Created by Isaac Lyons on 8/7/21.
+//  Created by Elaine Lyons on 8/7/21.
 //
 
 import UIKit

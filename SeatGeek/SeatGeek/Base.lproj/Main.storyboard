@@ -44,21 +44,33 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCz-6D-9UC">
+                                            <rect key="frame" x="360" y="31.5" width="34" height="34"/>
+                                            <state key="normal" image="heart">
+                                                <color key="titleColor" systemColor="systemRedColor"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="favorite:" destination="Maf-yj-Wfe" eventType="touchUpInside" id="qND-Uh-N84"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="97N-yv-zD0" secondAttribute="bottom" constant="8" id="81s-Zd-cEJ"/>
                                         <constraint firstItem="VWt-xj-buT" firstAttribute="leading" secondItem="ZiB-Fe-unH" secondAttribute="leading" constant="20" symbolic="YES" id="BL4-UQ-lgk"/>
+                                        <constraint firstItem="bCz-6D-9UC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="97N-yv-zD0" secondAttribute="trailing" constant="8" id="Ce2-eG-pYQ"/>
                                         <constraint firstItem="97N-yv-zD0" firstAttribute="top" secondItem="QtO-sB-mL6" secondAttribute="bottom" constant="8" symbolic="YES" id="M92-Sf-LF3"/>
+                                        <constraint firstItem="bCz-6D-9UC" firstAttribute="trailing" secondItem="ZiB-Fe-unH" secondAttribute="trailingMargin" id="Sd1-R1-8cJ"/>
                                         <constraint firstItem="VWt-xj-buT" firstAttribute="top" secondItem="ZiB-Fe-unH" secondAttribute="top" constant="8" id="XkF-WV-5JB"/>
                                         <constraint firstItem="97N-yv-zD0" firstAttribute="leading" secondItem="QtO-sB-mL6" secondAttribute="leading" id="aKb-At-0XN"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="97N-yv-zD0" secondAttribute="trailing" constant="8" id="hAD-hD-R9j"/>
+                                        <constraint firstItem="bCz-6D-9UC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QtO-sB-mL6" secondAttribute="trailing" constant="8" id="ihS-pU-gtd"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="VWt-xj-buT" secondAttribute="bottom" constant="8" id="k8W-ek-PNk"/>
+                                        <constraint firstItem="bCz-6D-9UC" firstAttribute="centerY" secondItem="ZiB-Fe-unH" secondAttribute="centerY" id="kfo-mj-ror"/>
                                         <constraint firstItem="QtO-sB-mL6" firstAttribute="top" secondItem="ZiB-Fe-unH" secondAttribute="topMargin" id="qbE-Wh-cjH"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="QtO-sB-mL6" secondAttribute="trailing" constant="8" id="rql-my-dM6"/>
                                         <constraint firstItem="QtO-sB-mL6" firstAttribute="leading" secondItem="VWt-xj-buT" secondAttribute="trailing" constant="8" symbolic="YES" id="xVC-bl-2zs"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="favoriteButton" destination="bCz-6D-9UC" id="Brx-rP-ch5"/>
                                     <outlet property="headline" destination="QtO-sB-mL6" id="ftv-ON-Kt1"/>
                                     <outlet property="previewImageView" destination="VWt-xj-buT" id="jam-YP-qxw"/>
                                     <outlet property="subheadline" destination="97N-yv-zD0" id="O99-87-P9V"/>
@@ -156,7 +168,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" width="33" height="33"/>
+        <image name="heart" width="33.5" height="33.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

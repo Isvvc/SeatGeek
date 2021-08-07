@@ -46,6 +46,7 @@ struct PersistenceController {
         guard moc.hasChanges else { return }
         do {
             try moc.save()
+            print("Saved")
         } catch {
             let nsError = error as NSError
             NSLog("Error saving context: \(nsError), \(nsError.userInfo)")

@@ -2,7 +2,7 @@
 //  EventsTableViewController.swift
 //  SeatGeek
 //
-//  Created by Isaac Lyons on 8/6/21.
+//  Created by Elaine Lyons on 8/6/21.
 //
 
 import UIKit
@@ -72,6 +72,7 @@ class EventsTableViewController: UITableViewController {
 
         if let eventCell = cell as? EventTableViewCell {
             let event = fetchedResultsController.object(at: indexPath)
+            eventCell.seatGeekController = seatGeekController
             eventCell.load(event: event)
         }
 

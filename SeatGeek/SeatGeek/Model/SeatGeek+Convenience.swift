@@ -2,7 +2,7 @@
 //  SeatGeek+Convenience.swift
 //  SeatGeek
 //
-//  Created by Isaac Lyons on 8/6/21.
+//  Created by Elaine Lyons on 8/6/21.
 //
 
 import CoreData
