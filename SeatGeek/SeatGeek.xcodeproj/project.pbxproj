@@ -12,6 +12,7 @@
 		5904647026BDCEB6004C90D2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5904646F26BDCEB6004C90D2 /* EventsTableViewController.swift */; };
 		59965E4926BF278100ED2F83 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59965E4826BF278100ED2F83 /* EventTableViewCell.swift */; };
 		59965E4D26BF301000ED2F83 /* DemoEvent.json in Resources */ = {isa = PBXBuildFile; fileRef = 59965E4C26BF301000ED2F83 /* DemoEvent.json */; };
+		59965E5026BF340A00ED2F83 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 59965E4F26BF340A00ED2F83 /* SDWebImage */; };
 		59F23DE126BDBA9A00CE20DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */; };
 		59F23DE326BDBA9A00CE20DA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */; };
 		59F23DE826BDBA9A00CE20DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F23DE626BDBA9A00CE20DA /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59965E5026BF340A00ED2F83 /* SDWebImage in Frameworks */,
 				5904646A26BDC5E8004C90D2 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +171,7 @@
 			name = SeatGeek;
 			packageProductDependencies = (
 				5904646926BDC5E8004C90D2 /* SwiftyJSON */,
+				59965E4F26BF340A00ED2F83 /* SDWebImage */,
 			);
 			productName = SeatGeek;
 			productReference = 59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */;
@@ -221,6 +224,7 @@
 			mainGroup = 59F23DD426BDBA9A00CE20DA;
 			packageReferences = (
 				5904646826BDC5E8004C90D2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				59965E4E26BF340A00ED2F83 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 59F23DDE26BDBA9A00CE20DA /* Products */;
 			projectDirPath = "";
@@ -548,6 +552,14 @@
 				minimumVersion = 5.0.1;
 			};
 		};
+		59965E4E26BF340A00ED2F83 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -555,6 +567,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5904646826BDC5E8004C90D2 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		59965E4F26BF340A00ED2F83 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59965E4E26BF340A00ED2F83 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 

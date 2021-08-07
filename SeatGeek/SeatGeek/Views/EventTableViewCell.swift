@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class EventTableViewCell: UITableViewCell {
     
@@ -28,6 +29,7 @@ class EventTableViewCell: UITableViewCell {
         } else {
             subheadline.text = nil
         }
+        previewImageView.sd_setImage(with: event.image)
     }
 
 }
