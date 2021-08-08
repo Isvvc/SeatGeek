@@ -13,7 +13,7 @@ class SeatGeekController {
     //MARK: Properties
     
     /// The `client_id` API key
-    var clientID: String? = ProcessInfo.processInfo.environment["client_id"]
+    var clientID: String? = Bundle.main.infoDictionary?["CLIENT_ID"] as? String
     /// The authorization header encoded to base-64.
     var auth: String? {
         guard let clientID = clientID else { return nil }
@@ -114,7 +114,7 @@ class SeatGeekController {
     private func authorizedRequest(url: URL) -> URLRequest? {
         guard let auth = auth else {
             // fatalError instead?
-            NSLog("No valid client ID found. Set client_id in the scheme's environment to your SeatGeek client ID.")
+            NSLog("No valid client ID found. Set CLIENT_ID in the project config to your SeatGeek client ID. See readme for more details")
             return nil
         }
         

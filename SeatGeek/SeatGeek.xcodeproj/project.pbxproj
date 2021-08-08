@@ -41,6 +41,7 @@
 		59965E4826BF278100ED2F83 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		59965E4C26BF301000ED2F83 /* DemoEvent.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DemoEvent.json; sourceTree = "<group>"; };
 		59965E5126BF362000ED2F83 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		59E3E0A826BF65B8004DEA3A /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		59F23DDD26BDBA9A00CE20DA /* SeatGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeatGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F23DE026BDBA9A00CE20DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59F23DE226BDBA9A00CE20DA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 				59F23DEC26BDBA9E00CE20DA /* Assets.xcassets */,
 				59F23DEE26BDBA9E00CE20DA /* LaunchScreen.storyboard */,
 				59F23DF126BDBA9E00CE20DA /* Info.plist */,
+				59E3E0A826BF65B8004DEA3A /* Config.xcconfig */,
 			);
 			path = SeatGeek;
 			sourceTree = "<group>";
@@ -317,6 +319,7 @@
 /* Begin XCBuildConfiguration section */
 		59F23E0826BDBA9E00CE20DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E3E0A826BF65B8004DEA3A /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -366,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -378,6 +381,7 @@
 		};
 		59F23E0926BDBA9E00CE20DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E3E0A826BF65B8004DEA3A /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -421,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

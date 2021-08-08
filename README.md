@@ -24,13 +24,11 @@ Dependencies are obtained automatically by Xcode through Swift Package Manager.
 
 ### API Key
 
-You'll need to add a [SeatGeek API key](https://seatgeek.com/account/develop) to your scheme to be able to test (requires a SeatGeek account).
+You'll need to add a [SeatGeek API key](https://seatgeek.com/account/develop) to the project to be able to test (requires a SeatGeek account).
 
-Edit your scheme in Xcode. Ensure the "Shared" checkbox is _unchecked_ to keep the scheme private.
-
-Under Arguments in Run, add the following environment variable:
-
-+ `client_id`: Your client ID for the SeatGeek API.
+1. Create a Config.xcconfig file in the SeatGeek folder (make sure it's named exactly this so it isn't commited to git).
+1. Enter `CLIENT_ID = ` followed by your SeatGeek client_id.
+1. In the project settings under Info, Configuration, set the project's configuration file to the one you just made.
 
 ## License
 
