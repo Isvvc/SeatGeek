@@ -15,6 +15,9 @@ class EventsTableViewController: UITableViewController {
     var seatGeekController = SeatGeekController()
     var dataTask: URLSessionDataTask?
     var previousSearchResults: [Event] = []
+    var showingFavorites = false
+    
+    weak private var showFavoritesButton: UIBarButtonItem?
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -22,7 +25,8 @@ class EventsTableViewController: UITableViewController {
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
         
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "date", ascending: true)
+            NSSortDescriptor(key: "date", ascending: true),
+            NSSortDescriptor(key: "title", ascending: true)
         ]
         
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
@@ -53,6 +57,12 @@ class EventsTableViewController: UITableViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
+        
+        // Programmatically add a button to filter favorites
+        let showFavoritesButton = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain, target: self, action: #selector(toggleFavorites))
+        showFavoritesButton.tintColor = .systemRed
+        navigationItem.leftBarButtonItem = showFavoritesButton
+        self.showFavoritesButton = showFavoritesButton
         
         dataTask = seatGeekController.getEvents { _, _ in
             print("Fetch complete")
@@ -114,18 +124,73 @@ class EventsTableViewController: UITableViewController {
         }
     }
     
-    private func frcPredicate(searchString: String?, events: Set<Event>? = nil) -> NSPredicate? {
-        guard let searchString = searchString,
-              !searchString.isEmpty else { return nil }
-        let lowercaseSearch = searchString.lowercased()
+    @objc
+    private func toggleFavorites(_ sender: UIBarButtonItem) {
+        showingFavorites.toggle()
         
-        var predicates = [NSPredicate(format: "title CONTAINS[c] %@", lowercaseSearch)]
+        sender.image = showingFavorites ? #imageLiteral(resourceName: "heart.fill") : #imageLiteral(resourceName: "heart")
+        fetchedResultsController.fetchRequest.predicate = frcPredicate(searchString: nil, favorites: showingFavorites)
         
-        if let events = events {
-            predicates.append(NSPredicate(format: "self IN %@", events))
+        // When disabling favorites filter, perform the
+        // fetch first to get the full list of Events.
+        if !showingFavorites {
+            try? fetchedResultsController.performFetch()
         }
         
-        return NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
+        // Get the indices of the unfavorited rows
+        let indexPaths = fetchedResultsController.fetchedObjects?.enumerated()
+            .filter { !$1.favorite }
+            .map { index, _ in IndexPath(row: index, section: 0) }
+        
+        // When enabling favorites filter, perform the
+        // fetch after to get the filtered list of Events.
+        if showingFavorites {
+            try? fetchedResultsController.performFetch()
+        }
+        
+        if let indexPaths = indexPaths {
+            if showingFavorites {
+                // Remove the non-favorite rows
+                tableView.deleteRows(at: indexPaths, with: .automatic)
+            } else {
+                // Insert the non-favorite rows
+                tableView.insertRows(at: indexPaths, with: .automatic)
+            }
+        } else {
+            tableView.reloadData()
+        }
+    }
+    
+    private func disableFavoritesFilter() {
+        guard showingFavorites else { return }
+        showingFavorites = false
+        showFavoritesButton?.image = #imageLiteral(resourceName: "heart")
+    }
+    
+    private func frcPredicate(searchString: String?, events: Set<Event>? = nil, favorites: Bool = false) -> NSPredicate? {
+        var predicates: [NSPredicate] = []
+        
+        if let searchString = searchString,
+              !searchString.isEmpty {
+            let lowercaseSearch = searchString.lowercased()
+            predicates.append(NSPredicate(format: "title CONTAINS[c] %@", lowercaseSearch))
+            
+            if let events = events {
+                predicates.append(NSPredicate(format: "self IN %@", events))
+            }
+        }
+        
+        if predicates.isEmpty {
+            predicates.append(NSPredicate(format: "TRUEPREDICATE"))
+        }
+        
+        let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: predicates)
+        
+        if favorites {
+            return NSCompoundPredicate(andPredicateWithSubpredicates: [predicate, NSPredicate(format: "favorite == YES")])
+        }
+        
+        return predicate
     }
 
 }
@@ -135,6 +200,7 @@ class EventsTableViewController: UITableViewController {
 extension EventsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         // Perform fast, local search if there is no ongoing networking search.
+        disableFavoritesFilter()
         let searchString = searchController.searchBar.text
         if searchString?.isEmpty ?? true || self.previousSearchResults.isEmpty {
             self.previousSearchResults.removeAll()
