@@ -2,9 +2,12 @@
 
 A simple SeatGeek app for iOS
 
+<img src="Screenshots/iPhone 8 Plus - Events.png" height=400 /> <img src="Screenshots/iPhone 8 Plus - Event.png" height=400 /> <img src="Screenshots/iPhone 8 Plus - Search.png" height=400 /> <img src="Screenshots/iPhone 8 Plus - Favorites.png" height=400 />
+
 ## Features
 
 + Browse events from all across the world.
++ Search for specific events or locations.
 + Favorite events to see later.
 
 ### Requirements
