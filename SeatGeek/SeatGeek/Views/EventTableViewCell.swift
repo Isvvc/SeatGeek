@@ -38,12 +38,15 @@ class EventTableViewCell: UITableViewCell {
     
     private func updateViews() {
         guard let event = event else { return }
+        
         headline.text = event.title
+        
+        var bodyText = event.location ?? ""
         if let date = event.date {
-            subheadline.text = EventTableViewCell.dateFormatter.string(from: date)
-        } else {
-            subheadline.text = nil
+            bodyText += "\n" + EventTableViewCell.dateFormatter.string(from: date)
         }
+        subheadline.text = bodyText
+        
         previewImageView.sd_setImage(with: event.image)
         previewImageView.layer.cornerRadius = 8
         previewImageView.clipsToBounds = true

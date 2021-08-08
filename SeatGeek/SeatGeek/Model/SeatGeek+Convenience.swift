@@ -8,6 +8,8 @@
 import CoreData
 import SwiftyJSON
 
+//MARK: Event
+
 extension Event {
     @discardableResult
     convenience init?(json: JSON, context moc: NSManagedObjectContext) {
@@ -22,6 +24,7 @@ extension Event {
         self.date = date
         
         getImage(from: json)
+        getLocation(from: json)
     }
     
     func update(from json: JSON) {
@@ -34,15 +37,40 @@ extension Event {
         }
         
         getImage(from: json)
+        getLocation(from: json)
     }
     
     private func getImage(from json: JSON) {
-        // Imagesa are stored in "performers".
+        // Images are stored in "performers".
         // Get the first image available.
         _ = json["performers"].array?.first(where: { performer in
             guard let url = performer["image"].url else { return false }
             image = url
             return true
         })
+    }
+    
+    private func getLocation(from json: JSON) {
+        // The locations are stored in "venue".
+        let venue = json["venue"]
+        let city = venue["city"].string
+        let state = venue["state"].string
+        let country = venue["country"].string
+        
+        switch (city, state, country) {
+        case (.some(let city), .some(let region), _),
+             (.some(let city), .none, .some(let region)):
+            // There is a city and a state and/or country.
+            location = "\(city), \(region)"
+        case (.none, .some(let region), _),
+             (.none, .none, .some(let region)):
+            // There is no city but there is a state and/or country
+            location = region
+        case (.some(let city), .none, .none):
+            // There is a city but no state or country.
+            location = city
+        default:
+            break
+        }
     }
 }

@@ -30,11 +30,13 @@ class EventViewController: UIViewController {
     
     private func updateViews() {
         eventTitle.text = event?.title
+        
+        var bodyText = event?.location ?? ""
         if let date = event?.date {
-            dateLabel.text = EventTableViewCell.dateFormatter.string(from: date)
-        } else {
-            dateLabel.text = nil
+            bodyText += "\n" + EventTableViewCell.dateFormatter.string(from: date)
         }
+        dateLabel.text = bodyText
+        
         eventImage.sd_setImage(with: event?.image)
         eventImage.layer.cornerRadius = 8
         eventImage.clipsToBounds = true
