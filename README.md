@@ -2,15 +2,25 @@
 
 A simple SeatGeek app for iOS
 
+## Features
+
++ Browse events from all across the world.
++ Favorite events to see later.
+
+### Requirements
+
+Requires iOS 12.1 or later.
+
 ## Build
 
-Building Character Tracker requires Xcode 11+ on macOS 10.14.4 or later for iOS Swift Package Manager support.
+Building SeatGeek iOS requires Xcode 11+ on macOS 10.14.4 or later for iOS Swift Package Manager support.
 
 ### Dependencies
 
 Dependencies are obtained automatically by Xcode through Swift Package Manager.
 
-* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
++ [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
++ [SDWebImage](https://github.com/SDWebImage/SDWebImage)
 
 ### API Key
 

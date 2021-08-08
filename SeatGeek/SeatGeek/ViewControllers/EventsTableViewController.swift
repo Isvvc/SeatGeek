@@ -10,6 +10,8 @@ import CoreData
 
 class EventsTableViewController: UITableViewController {
     
+    //MARK: Properties
+    
     var seatGeekController = SeatGeekController()
     var dataTask: URLSessionDataTask?
     var previousSearchResults: [Event] = []
