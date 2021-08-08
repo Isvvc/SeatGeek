@@ -9,6 +9,8 @@ import CoreData
 
 struct PersistenceController {
     
+    //MARK: Static
+    
     static let shared = PersistenceController()
     
     static let test = PersistenceController(inMemory: true)
@@ -17,6 +19,8 @@ struct PersistenceController {
     static var mainContext: NSManagedObjectContext {
         shared.container.viewContext
     }
+    
+    //MARK: Properties
     
     let container: NSPersistentContainer
     
@@ -46,6 +50,7 @@ struct PersistenceController {
         guard moc.hasChanges else { return }
         do {
             try moc.save()
+            print("Saved")
         } catch {
             let nsError = error as NSError
             NSLog("Error saving context: \(nsError), \(nsError.userInfo)")

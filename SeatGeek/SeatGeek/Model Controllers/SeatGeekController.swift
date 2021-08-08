@@ -21,6 +21,8 @@ class SeatGeekController {
     }
     
     var testing: Bool
+    /// `PersistenceController`'s `mainContext` in production
+    /// or its `test` instance's view context if `testing` is `true`.
     var moc: NSManagedObjectContext {
         testing ? PersistenceController.test.container.viewContext : PersistenceController.mainContext
     }
@@ -29,6 +31,7 @@ class SeatGeekController {
         self.testing = testing
     }
     
+    /// ISO 8601 date formatter for decoding dates from SeakGeek API.
     static var dateFormatter: ISO8601DateFormatter {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withFullDate, .withTime, .withColonSeparatorInTime]
@@ -87,6 +90,7 @@ class SeatGeekController {
                 let json = try JSON(data: data)
                 let events = try self?.loadEvents(from: json, context: moc)
                 print(events?.compactMap { $0.title } ?? [])
+                PersistenceController.save(context: moc)
                 completion(events, error)
             } catch {
                 completion(nil, error)
@@ -96,10 +100,20 @@ class SeatGeekController {
         return task
     }
     
+    /// Saves on the current Managed Object Context (see `moc`).
+    func save() {
+        PersistenceController.save(context: moc)
+    }
+    
     //MARK: Private
     
+    /// Creates an authorized URLRequest for the given URL.
+    /// - Parameter url: The URL to create the request for.
+    /// - Returns: A URLSession for the given URL with the
+    /// authorization header from the `user_id` in the environment.
     private func authorizedRequest(url: URL) -> URLRequest? {
         guard let auth = auth else {
+            // fatalError instead?
             NSLog("No valid client ID found. Set client_id in the scheme's environment to your SeatGeek client ID.")
             return nil
         }

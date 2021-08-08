@@ -2,13 +2,15 @@
 //  EventsTableViewController.swift
 //  SeatGeek
 //
-//  Created by Isaac Lyons on 8/6/21.
+//  Created by Elaine Lyons on 8/6/21.
 //
 
 import UIKit
 import CoreData
 
 class EventsTableViewController: UITableViewController {
+    
+    //MARK: Properties
     
     var seatGeekController = SeatGeekController()
     var dataTask: URLSessionDataTask?
@@ -70,8 +72,11 @@ class EventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath)
 
-        let event = fetchedResultsController.object(at: indexPath)
-        cell.textLabel?.text = event.title
+        if let eventCell = cell as? EventTableViewCell {
+            let event = fetchedResultsController.object(at: indexPath)
+            eventCell.seatGeekController = seatGeekController
+            eventCell.load(event: event)
+        }
 
         return cell
     }
@@ -86,15 +91,15 @@ class EventsTableViewController: UITableViewController {
     }
     #endif
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let eventVC = segue.destination as? EventViewController,
+           let indexPath = tableView.indexPathForSelectedRow {
+            eventVC.event = fetchedResultsController.object(at: indexPath)
+            eventVC.seatGeekController = seatGeekController
+        }
     }
-    */
     
     //MARK: Private
     
@@ -125,7 +130,7 @@ class EventsTableViewController: UITableViewController {
 
 }
 
-//MARK: Search results updating
+//MARK: Search Results Updating
 
 extension EventsTableViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -164,6 +169,7 @@ extension EventsTableViewController: UISearchResultsUpdating {
 //MARK: Fetched Results Controller Delegate
 
 // Boilerplate code pasted from another project
+// Animates updates to the table observed by the Fetched Results Controller
 extension EventsTableViewController: NSFetchedResultsControllerDelegate {
     
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
