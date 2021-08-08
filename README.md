@@ -2,7 +2,7 @@
 
 A simple SeatGeek app for iOS
 
-<img src="Screenshots/iPhone 8 Plus - Events.png" height=400 /> <img src="Screenshots/iPhone 8 Plus - Event.png" height=400 /> <img src="Screenshots/iPhone 8 Plus - Search.png" height=400 /> <img src="Screenshots/iPhone 8 Plus - Favorites.png" height=400 />
+<img src="Screenshots/iPhone 8 Plus - Events.png" height=300 /> <img src="Screenshots/iPhone 8 Plus - Event.png" height=300 /> <img src="Screenshots/iPhone 8 Plus - Search.png" height=300 /> <img src="Screenshots/iPhone 8 Plus - Favorites.png" height=300 />
 
 ## Features
 
