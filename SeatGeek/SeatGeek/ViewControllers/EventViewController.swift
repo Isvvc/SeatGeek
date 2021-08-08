@@ -12,7 +12,7 @@ class EventViewController: UIViewController {
     
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventImage: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var bodyLabel: UILabel!
     
     var event: Event?
     var seatGeekController: SeatGeekController?
@@ -35,7 +35,7 @@ class EventViewController: UIViewController {
         if let date = event?.date {
             bodyText += "\n" + EventTableViewCell.dateFormatter.string(from: date)
         }
-        dateLabel.text = bodyText
+        bodyLabel.text = bodyText
         
         eventImage.sd_setImage(with: event?.image)
         eventImage.layer.cornerRadius = 8

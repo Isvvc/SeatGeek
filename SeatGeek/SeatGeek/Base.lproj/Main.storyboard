@@ -143,7 +143,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateLabel" destination="uQq-8J-Fw4" id="eJp-CC-0vg"/>
+                        <outlet property="bodyLabel" destination="uQq-8J-Fw4" id="eJp-CC-0vg"/>
                         <outlet property="eventImage" destination="D4I-Ab-e37" id="haF-zx-4Di"/>
                         <outlet property="eventTitle" destination="r53-0N-zeL" id="ybL-2S-P0E"/>
                     </connections>
