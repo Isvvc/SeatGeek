@@ -46,6 +46,7 @@ class EventViewController: UIViewController {
     }
     
     private func setUpViews() {
+        // Example description label
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         let constraints = [
@@ -58,6 +59,45 @@ class EventViewController: UIViewController {
         
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.text = "Example description"
+        
+        // Pinch to zoom
+        eventImage.isUserInteractionEnabled = true
+        
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+        pinchRecognizer.delegate = self
+        eventImage.addGestureRecognizer(pinchRecognizer)
+        
+        let rotateRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate))
+        rotateRecognizer.delegate = self
+        eventImage.addGestureRecognizer(rotateRecognizer)
+    }
+    
+    @objc
+    private func pinch(_ sender: UIPinchGestureRecognizer) {
+        guard sender.view == eventImage else { return }
+        if sender.state == .ended,
+           eventImage.transform.a < 1 {
+            UIView.animate(withDuration: 0.1) {
+                sender.view?.transform = .identity
+            }
+        } else {
+            eventImage.transform = eventImage.transform.scaledBy(x: sender.scale, y: sender.scale)
+            sender.scale = 1
+        }
+        print(eventImage.transform)
+    }
+    
+    @objc
+    private func rotate(_ sender: UIRotationGestureRecognizer) {
+        guard sender.view == eventImage else { return }
+        eventImage.transform = eventImage.transform.rotated(by: sender.rotation)
+        sender.rotation = 0
     }
 
+}
+
+extension EventViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        true
+    }
 }
