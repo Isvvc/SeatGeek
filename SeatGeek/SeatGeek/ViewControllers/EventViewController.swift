@@ -74,6 +74,11 @@ class EventViewController: UIViewController {
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan))
         panRecognizer.delegate = self
         eventImage.addGestureRecognizer(panRecognizer)
+        
+        // Double tap to zoom or unzoom
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap))
+        doubleTapRecognizer.numberOfTapsRequired = 2
+        eventImage.addGestureRecognizer(doubleTapRecognizer)
     }
     
     @objc
@@ -104,6 +109,21 @@ class EventViewController: UIViewController {
         let translation = sender.translation(in: eventImage)
         eventImage.transform = eventImage.transform.translatedBy(x: translation.x, y: translation.y)
         sender.setTranslation(.zero, in: eventImage)
+    }
+    
+    @objc
+    private func doubleTap(_ sender: UITapGestureRecognizer) {
+        guard let eventImage = sender.view,
+              eventImage == self.eventImage else { return }
+        UIView.animate(withDuration: 0.1) {
+            if eventImage.transform == .identity {
+                // Zoom in
+                eventImage.transform = eventImage.transform.scaledBy(x: 2, y: 2)
+            } else {
+                // Reset zoom
+                eventImage.transform = .identity
+            }
+        }
     }
 
 }
