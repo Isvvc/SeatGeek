@@ -70,13 +70,18 @@ class EventViewController: UIViewController {
         let rotateRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(rotate))
         rotateRecognizer.delegate = self
         eventImage.addGestureRecognizer(rotateRecognizer)
+        
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(pan))
+        panRecognizer.delegate = self
+        eventImage.addGestureRecognizer(panRecognizer)
     }
     
     @objc
     private func pinch(_ sender: UIPinchGestureRecognizer) {
         guard sender.view == eventImage else { return }
         if sender.state == .ended,
-           eventImage.transform.a < 1 {
+           // Check if the scale is less than 1
+           sqrt(Double(eventImage.transform.a * eventImage.transform.a + eventImage.transform.c * eventImage.transform.c)) < 1 {
             UIView.animate(withDuration: 0.1) {
                 sender.view?.transform = .identity
             }
@@ -84,7 +89,6 @@ class EventViewController: UIViewController {
             eventImage.transform = eventImage.transform.scaledBy(x: sender.scale, y: sender.scale)
             sender.scale = 1
         }
-        print(eventImage.transform)
     }
     
     @objc
@@ -92,6 +96,14 @@ class EventViewController: UIViewController {
         guard sender.view == eventImage else { return }
         eventImage.transform = eventImage.transform.rotated(by: sender.rotation)
         sender.rotation = 0
+    }
+    
+    @objc
+    private func pan(_ sender: UIPanGestureRecognizer) {
+        guard sender.view == eventImage else { return }
+        let translation = sender.translation(in: eventImage)
+        eventImage.transform = eventImage.transform.translatedBy(x: translation.x, y: translation.y)
+        sender.setTranslation(.zero, in: eventImage)
     }
 
 }
