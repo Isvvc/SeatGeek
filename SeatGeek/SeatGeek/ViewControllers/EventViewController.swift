@@ -19,6 +19,7 @@ class EventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpViews()
         updateViews()
     }
     
@@ -42,6 +43,21 @@ class EventViewController: UIViewController {
         eventImage.clipsToBounds = true
         
         navigationItem.rightBarButtonItem?.image = event?.favorite ?? false ? #imageLiteral(resourceName: "heart.fill") : #imageLiteral(resourceName: "heart")
+    }
+    
+    private func setUpViews() {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        let constraints = [
+            label.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: 8),
+            label.leadingAnchor.constraint(equalTo: eventImage.leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: eventImage.trailingAnchor)
+        ]
+        view.addSubview(label)
+        view.addConstraints(constraints)
+        
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.text = "Example description"
     }
 
 }
